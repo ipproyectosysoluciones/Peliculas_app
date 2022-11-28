@@ -3,12 +3,6 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import Swiper from 'swiper';
 import { Movie } from '../../interfaces/cartelera-response';
 
-// import Swiper core and required modules
-// import SwiperCore, { Navigation, SwiperOptions } from "swiper";
-
-// install Swiper modules
-// SwiperCore.use( [ Navigation ] );
-
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
@@ -18,16 +12,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   @Input() movies: Movie[];
 
-  // swiperConfig: SwiperOptions = {
-  //   slidesPerView: 1,
-  //   spaceBetween: 20,
-  //   navigation: true,
-  //   breakpoints: {
-  //     992: {
-  //       spaceBetween: 20
-  //     }
-  //   }
-  // };
+  public swiper: Swiper;
 
   constructor () { }
 
@@ -35,16 +20,23 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
  * @name ngAfterViewInit SlideshowComponent
  */
   ngAfterViewInit (): void {
-    const swiper = new Swiper( '.swiper', {
+    this.swiper = new Swiper( '.swiper', {
       // Optional parameters
       // direction: 'vertical',
       loop: true,
-
     } );
   }
 
   ngOnInit (): void {
-    console.log( this.movies );
+    // console.log( this.movies );
+  }
+
+  onSlideNext () {
+    this.swiper.slideNext();
+  }
+
+  onSlidePrev () {
+    this.swiper.slidePrev();
   }
 
 }
