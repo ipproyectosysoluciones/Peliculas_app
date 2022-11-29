@@ -20,10 +20,12 @@ export class HomeComponent implements OnInit {
 
     if ( pos > max ) {
       //TODO: llamar el servicio
-      console.log( 'Llammar al servicio' );
+      // console.log( 'Llammar al servicio' );
+      if ( this.peliculasService.cargando ) { return; };
+
       this.peliculasService.getCartelera()
-        .subscribe( resp => {
-          this.movies.push( ...resp.results );
+        .subscribe( movies => {
+          this.movies.push( ...movies );
       } );
     }
 
@@ -40,10 +42,10 @@ export class HomeComponent implements OnInit {
    */
   ngOnInit (): void {
     this.peliculasService.getCartelera()
-      .subscribe( resp => {
+      .subscribe( movies => {
         // console.log( resp.results );
-        this.movies = resp.results;
-        this.moviesSlideshow = resp.results;
+        this.movies = movies;
+        this.moviesSlideshow = movies;
       } );
   }
 

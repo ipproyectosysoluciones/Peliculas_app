@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
-import { CarteleraResponse } from '../interfaces/cartelera-response';
+import { CarteleraResponse, Movie } from '../interfaces/cartelera-response';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class PeliculasService {
 
   private baseUrl: string = 'https://api.themoviedb.org/3';
   private carteleraPage = 1;
+  public cargando: boolean = false;
 
   /**
    * @name constructor PeliculasService
@@ -35,10 +36,21 @@ export class PeliculasService {
    * @name getCartelera
    * @returns
    */
-  getCartelera ():Observable<CarteleraResponse> {
+  getCartelera (): Observable<Movie[]> {
+
+    if ( this.cargando ) {
+      //Cargando peliculas
+      return of([]);
+    }
+
+    // console.log( 'Cargando API' );
+
+    this.cargando = true;
     return this.http.get<CarteleraResponse>( ` ${ this.baseUrl }/movie/now_playing?`, { params: this.params } ).pipe(
+      map( ( resp ) => resp.results ),
       tap( () => {
         this.carteleraPage += 1;
+        this.cargando = false;
       } )
     );
   }
