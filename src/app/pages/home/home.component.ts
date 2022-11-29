@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
     const max = ( document.documentElement.scrollHeight || document.body.scrollHeight );
 
     if ( pos > max ) {
-      //TODO: llamar el servicio
       // console.log( 'Llammar al servicio' );
       if ( this.peliculasService.cargando ) { return; };
 

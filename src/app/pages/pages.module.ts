@@ -14,8 +14,8 @@ import { ComponentsModule } from './../components/components.module';
     BuscarComponent
   ],
   imports: [
-  CommonModule,
-  ComponentsModule
+    CommonModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }
