@@ -22,6 +22,7 @@ export class PeliculasService {
   constructor ( private http: HttpClient ) { }
 
   /**
+   * @name getters params PeliculasService
    * @returns
    */
   get params () {
@@ -33,7 +34,14 @@ export class PeliculasService {
   }
 
   /**
-   * @name getCartelera
+   * @name resetCarteleraPage PeliculasService
+   */
+  resetCarteleraPage () {
+    this.carteleraPage = 1;
+  }
+
+  /**
+   * @name getCartelera PeliculasService
    * @returns
    */
   getCartelera (): Observable<Movie[]> {
