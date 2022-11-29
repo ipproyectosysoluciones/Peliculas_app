@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { CarteleraResponse, Movie } from '../interfaces/cartelera-response';
 import { MovieResponse } from './../interfaces/movie-response';
+import { CreditsResponse } from './../interfaces/credits-response';
 
 @Injectable({
   providedIn: 'root'
@@ -88,7 +89,26 @@ export class PeliculasService {
    */
   getPeliculaDetalle ( id: number ) {
     //https://api.themoviedb.org/3/movie/436270?
-    return this.http.get<MovieResponse>( `${ this.baseUrl }/movie/${ id }?`, { params: this.params } );
+    return this.http.get<MovieResponse>( `${ this.baseUrl }/movie/${ id }?`, {
+      params: this.params
+    } ).pipe(
+      catchError( err => of( null ) )
+    );
+  }
+
+  /**
+   * @name getCast PeliculasService
+   * @param id
+   * @returns
+   */
+  getCast ( id: number ) {
+    //https://api.themoviedb.org/3/movie/436270/credits?
+    return this.http.get<CreditsResponse>( `${ this.baseUrl }/movie/${ id }/credits?`, {
+      params: this.params
+    } ).pipe(
+      map( resp => resp.cast ),
+      catchError( err => of( [] ) ),
+    );
   }
 
 }
