@@ -9,7 +9,7 @@ import { StarRatingComponent } from 'ng-starrating';
 })
 export class PeliculasPosterGridComponent implements OnInit {
 
- @Input() movies: Movie[];
+  @Input() movies: Movie[];
 
   constructor() { }
 
