@@ -49,6 +49,6 @@ Y muchos temas mas!
 Importante:
 Abran los siguientes enlaces, los necesitaremos en las próximas lecciones, y también descarguen la imagen adjunta, también la necesitaremos.
 
-TheMovieDB.com - Documentación https://developers.themoviedb.org/3/getting-started
+TheMovieDB.com - Documentación <https://developers.themoviedb.org/3/getting-started>
 
-TheMovieDB.com https://www.themoviedb.org/?language=es
+TheMovieDB.com <https://www.themoviedb.org/?language=es>
