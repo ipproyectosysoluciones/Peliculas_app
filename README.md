@@ -25,3 +25,30 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+En esta sección trabajaremos con una API muy popular llamada TheMovieDB API, para hacer una aplicación de búsqueda de películas, puntualmente tocaremos temas como:
+
+Http Get
+
+Operadores de RXJS como el Tap y Map
+
+Combinar observables
+
+Módulos
+
+Estructura de un proyecto real
+
+Servicios
+
+Slideshow
+
+Swiper
+
+Y muchos temas mas!
+
+Importante:
+Abran los siguientes enlaces, los necesitaremos en las próximas lecciones, y también descarguen la imagen adjunta, también la necesitaremos.
+
+TheMovieDB.com - Documentación https://developers.themoviedb.org/3/getting-started
+
+TheMovieDB.com https://www.themoviedb.org/?language=es
